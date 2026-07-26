@@ -37,4 +37,11 @@ public class LaboratoryStaffService {
         laboratoryStaffRepository.save(updatedLaboratoryStaff);
         return updatedLaboratoryStaff;
     }
+
+    public void deleteLaboratoryStaff(Integer id){
+        LaboratoryStaff deletedLaboratoryStaff = laboratoryStaffRepository.findByLaboratoryStaffId(id);
+        deletedLaboratoryStaff.setIsActive(false);
+        laboratoryStaffRepository.save(deletedLaboratoryStaff);
+    }
+
 }
