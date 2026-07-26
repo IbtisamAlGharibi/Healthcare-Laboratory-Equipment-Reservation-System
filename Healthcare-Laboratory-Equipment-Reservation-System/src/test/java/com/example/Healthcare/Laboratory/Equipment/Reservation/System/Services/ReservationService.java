@@ -34,4 +34,9 @@ public class ReservationService {
         newReservation.setStatus("Approved");
         return reservationRepository.save(newReservation);
     }
+    public Reservation cancelReservation(Reservation reservation, Integer staffId) {
+        Reservation newReservation = reservationRepository.findByLaboratoryStaffId(staffId);
+        newReservation.setStatus("Cancelled");
+        return reservationRepository.save(newReservation);
+    }
 }
