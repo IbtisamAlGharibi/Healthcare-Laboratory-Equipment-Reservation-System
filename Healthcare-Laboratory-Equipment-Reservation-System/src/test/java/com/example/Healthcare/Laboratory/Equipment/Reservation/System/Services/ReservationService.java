@@ -51,4 +51,10 @@ public class ReservationService {
     public List<Reservation> getReservationsByStaff(Integer staffId) {
         return reservationRepository.findReservationsByLaboratoryStaffId(staffId);
     }
+
+    public void deleteReservation(Integer id){
+       Reservation deletedReservation = reservationRepository.findReservationById(id);
+        deletedReservation.setIsActive(false);
+        reservationRepository.save(deletedReservation);
+    }
 }

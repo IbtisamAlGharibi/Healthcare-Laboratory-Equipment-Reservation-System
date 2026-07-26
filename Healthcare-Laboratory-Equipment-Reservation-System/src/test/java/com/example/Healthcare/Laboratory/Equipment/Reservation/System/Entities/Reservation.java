@@ -20,6 +20,7 @@ public class Reservation {
     private LocalTime endTime;
     private String purpose;
     private String status;
+    private Boolean isActive;
 
    /* @ManyToOne
     @JoinColumn(name = "equipment_id", nullable = false)
