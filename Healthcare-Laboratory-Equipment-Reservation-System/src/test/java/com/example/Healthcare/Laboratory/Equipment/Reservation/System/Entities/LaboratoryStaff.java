@@ -14,18 +14,11 @@ public class LaboratoryStaff {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false, unique = true)
     private String email;
-
-    @Column(nullable = false)
     private String phone;
-
-    @Column(nullable = false)
     private String department;
+    private Boolean isActive;
 
     @OneToMany(mappedBy = "laboratoryStaff", cascade = CascadeType.ALL)
     private List<Reservation> reservations = new ArrayList<>();
