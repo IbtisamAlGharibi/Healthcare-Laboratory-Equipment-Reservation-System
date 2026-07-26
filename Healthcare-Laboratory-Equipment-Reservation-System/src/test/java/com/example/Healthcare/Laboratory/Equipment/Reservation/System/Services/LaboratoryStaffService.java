@@ -6,6 +6,8 @@ import com.example.Healthcare.Laboratory.Equipment.Reservation.System.Repositori
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LaboratoryStaffService {
     LaboratoryStaffRepository laboratoryStaffRepository;
@@ -46,4 +48,8 @@ public class LaboratoryStaffService {
     public LaboratoryStaff getLaboratoryStaffById(Integer id){
         return laboratoryStaffRepository.findByLaboratoryStaffId(id);
     }
+    public List<LaboratoryStaff> getAllLaboratoryStaff(){
+       return laboratoryStaffRepository.getAllStaff();
+    }
+
 }
