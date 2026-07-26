@@ -54,4 +54,7 @@ public class LaboratoryStaffService {
     public LaboratoryStaff getLaboratoryStaffByName(String name){
         return laboratoryStaffRepository.findByLaboratoryStaffName(name);
     }
+    public List<LaboratoryStaff> getLaboratoryStaffByDepartment(String department){
+       return laboratoryStaffRepository.findByDepartment(department);
+    }
 }
