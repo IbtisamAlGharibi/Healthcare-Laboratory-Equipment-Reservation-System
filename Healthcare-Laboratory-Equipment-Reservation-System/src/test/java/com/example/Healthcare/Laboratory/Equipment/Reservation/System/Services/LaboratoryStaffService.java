@@ -27,4 +27,14 @@ public class LaboratoryStaffService {
         laboratoryStaffRepository.save(newLaboratoryStaff);
         return newLaboratoryStaff;
     }
+    public LaboratoryStaff updateLaboratoryStaff(LaboratoryStaff laboratoryStaff){
+        LaboratoryStaff updatedLaboratoryStaff = new LaboratoryStaff();
+        updatedLaboratoryStaff.setName(laboratoryStaff.getName());
+        updatedLaboratoryStaff.setPhone(laboratoryStaff.getPhone());
+        updatedLaboratoryStaff.setEmail(laboratoryStaff.getEmail());
+        updatedLaboratoryStaff.setDepartment(laboratoryStaff.getDepartment());
+        updatedLaboratoryStaff.setIsActive(laboratoryStaff.getIsActive());
+        laboratoryStaffRepository.save(updatedLaboratoryStaff);
+        return updatedLaboratoryStaff;
+    }
 }
