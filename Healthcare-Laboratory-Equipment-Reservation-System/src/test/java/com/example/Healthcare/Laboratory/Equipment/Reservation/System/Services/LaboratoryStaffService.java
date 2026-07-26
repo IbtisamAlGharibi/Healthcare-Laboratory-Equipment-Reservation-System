@@ -43,5 +43,7 @@ public class LaboratoryStaffService {
         deletedLaboratoryStaff.setIsActive(false);
         laboratoryStaffRepository.save(deletedLaboratoryStaff);
     }
-
+    public LaboratoryStaff getLaboratoryStaffById(Integer id){
+        return laboratoryStaffRepository.findByLaboratoryStaffId(id);
+    }
 }
