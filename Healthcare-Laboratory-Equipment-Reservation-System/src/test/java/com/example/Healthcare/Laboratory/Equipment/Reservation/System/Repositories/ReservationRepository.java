@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
     @Query("select r from Reservation r where r.laboratoryStaff.id=:staffId ")
-    List<Reservation> findByLaboratoryStaffId(@Param("staffId") Integer staffId);
+    Reservation findByLaboratoryStaffId(@Param("staffId") Integer staffId);
     @Query("select r from Reservation r where r.equipment.id=:equipmentId ")
     List<Reservation> findByEquipmentId(@Param("equipmentId") Integer equipmentId);
     @Query("select r from Reservation r where r.status=:status ")

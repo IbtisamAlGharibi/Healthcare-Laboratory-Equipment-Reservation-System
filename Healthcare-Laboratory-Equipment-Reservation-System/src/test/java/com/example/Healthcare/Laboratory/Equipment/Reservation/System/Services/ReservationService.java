@@ -29,4 +29,9 @@ public class ReservationService {
        newReservation.setPurpose(reservation.getPurpose());
        return reservationRepository.save(newReservation);
     }
+    public Reservation approveReservation(Reservation reservation, Integer staffId) {
+        Reservation newReservation = reservationRepository.findByLaboratoryStaffId(staffId);
+        newReservation.setStatus("Approved");
+        return reservationRepository.save(newReservation);
+    }
 }
