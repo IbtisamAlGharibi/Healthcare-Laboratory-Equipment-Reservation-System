@@ -51,5 +51,7 @@ public class LaboratoryStaffService {
     public List<LaboratoryStaff> getAllLaboratoryStaff(){
        return laboratoryStaffRepository.getAllStaff();
     }
-
+    public LaboratoryStaff getLaboratoryStaffByName(String name){
+        return laboratoryStaffRepository.findByLaboratoryStaffName(name);
+    }
 }
