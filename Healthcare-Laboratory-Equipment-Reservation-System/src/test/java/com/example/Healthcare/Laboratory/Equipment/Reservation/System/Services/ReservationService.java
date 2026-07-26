@@ -7,6 +7,8 @@ import com.example.Healthcare.Laboratory.Equipment.Reservation.System.Repositori
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReservationService {
 
@@ -41,5 +43,8 @@ public class ReservationService {
     }
     public Reservation getReservation(Integer reservationId) {
         return reservationRepository.findReservationById(reservationId);
+    }
+    public List<Reservation> getAllReservations() {
+        return reservationRepository.getAllReservation();
     }
 }
