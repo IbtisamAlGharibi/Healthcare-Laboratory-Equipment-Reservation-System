@@ -10,6 +10,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class LaboratoryStaff {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
