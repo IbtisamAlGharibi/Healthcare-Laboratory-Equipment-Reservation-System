@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
+    @Query("select r from Reservation r where r.id=:id ")
+    Reservation findReservationById(@Param("id") Integer id);
     @Query("select r from Reservation r where r.laboratoryStaff.id=:staffId ")
     Reservation findByLaboratoryStaffId(@Param("staffId") Integer staffId);
     @Query("select r from Reservation r where r.equipment.id=:equipmentId ")

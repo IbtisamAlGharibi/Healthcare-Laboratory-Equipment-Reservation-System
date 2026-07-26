@@ -39,4 +39,7 @@ public class ReservationService {
         newReservation.setStatus("Cancelled");
         return reservationRepository.save(newReservation);
     }
+    public Reservation getReservation(Integer reservationId) {
+        return reservationRepository.findReservationById(reservationId);
+    }
 }
