@@ -47,4 +47,8 @@ public class ReservationService {
     public List<Reservation> getAllReservations() {
         return reservationRepository.getAllReservation();
     }
+
+    public List<Reservation> getReservationsByStaff(Integer staffId) {
+        return reservationRepository.findReservationsByLaboratoryStaffId(staffId);
+    }
 }
