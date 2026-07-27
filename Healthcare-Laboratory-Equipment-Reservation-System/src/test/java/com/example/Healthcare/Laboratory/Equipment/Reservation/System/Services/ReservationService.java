@@ -42,8 +42,9 @@ public class ReservationService {
         Reservation savedReservation = reservationRepository.save(reservation);
         return ReservationResponseDTO.fromEntity(savedReservation);
     }
-    public Reservation getReservation(Integer reservationId) {
-        return reservationRepository.findReservationById(reservationId);
+    public ReservationResponseDTO getReservation(Integer reservationId) {
+        Reservation reservation = reservationRepository.findReservationById(reservationId);
+        return ReservationResponseDTO.fromEntity(reservation);
     }
     public List<Reservation> getAllReservations() {
         return reservationRepository.getAllReservation();
