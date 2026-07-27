@@ -9,6 +9,7 @@ import com.example.Healthcare.Laboratory.Equipment.Reservation.System.Repositori
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -46,8 +47,13 @@ public class ReservationService {
         Reservation reservation = reservationRepository.findReservationById(reservationId);
         return ReservationResponseDTO.fromEntity(reservation);
     }
-    public List<Reservation> getAllReservations() {
-        return reservationRepository.getAllReservation();
+    public List<ReservationResponseDTO> getAllReservations() {
+        List<Reservation> reservations = reservationRepository.getAllReservation();
+        List<ReservationResponseDTO> response = new ArrayList<>();
+        for (Reservation reservation : reservations) {
+            response.add(ReservationResponseDTO.fromEntity(reservation));
+        }
+        return response;
     }
 
     public List<Reservation> getReservationsByStaff(Integer staffId) {
