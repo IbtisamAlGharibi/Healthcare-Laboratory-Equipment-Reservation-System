@@ -43,8 +43,9 @@ public class LaboratoryStaffService {
         deletedLaboratoryStaff.setIsActive(false);
         laboratoryStaffRepository.save(deletedLaboratoryStaff);
     }
-    public LaboratoryStaff getLaboratoryStaffById(Integer id){
-        return laboratoryStaffRepository.findByLaboratoryStaffId(id);
+    public LaboratoryStaffResponseDTO getLaboratoryStaffById(Integer id) {
+        LaboratoryStaff laboratoryStaff = laboratoryStaffRepository.findByLaboratoryStaffId(id);
+        return LaboratoryStaffResponseDTO.fromEntity(laboratoryStaff);
     }
     public List<LaboratoryStaff> getAllLaboratoryStaff(){
        return laboratoryStaffRepository.getAllStaff();
