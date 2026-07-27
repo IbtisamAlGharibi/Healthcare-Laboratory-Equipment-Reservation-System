@@ -1,5 +1,7 @@
 package com.example.Healthcare.Laboratory.Equipment.Reservation.System.Services;
 
+import com.example.Healthcare.Laboratory.Equipment.Reservation.System.DTOS.Request.LaboratoryStaffRequestDTO;
+import com.example.Healthcare.Laboratory.Equipment.Reservation.System.DTOS.Response.LaboratoryStaffResponseDTO;
 import com.example.Healthcare.Laboratory.Equipment.Reservation.System.Entities.LaboratoryStaff;
 import com.example.Healthcare.Laboratory.Equipment.Reservation.System.Repositories.LaboratoryStaffRepository;
 import com.example.Healthcare.Laboratory.Equipment.Reservation.System.Repositories.ReservationRepository;
@@ -19,16 +21,13 @@ public class LaboratoryStaffService {
         this.reservationRepository = reservationRepository;
     }
 
-    public LaboratoryStaff addLaboratoryStaff(LaboratoryStaff laboratoryStaff){
-        LaboratoryStaff newLaboratoryStaff = new LaboratoryStaff();
-        newLaboratoryStaff.setName(laboratoryStaff.getName());
-        newLaboratoryStaff.setPhone(laboratoryStaff.getPhone());
-        newLaboratoryStaff.setEmail(laboratoryStaff.getEmail());
-        newLaboratoryStaff.setDepartment(laboratoryStaff.getDepartment());
-        newLaboratoryStaff.setIsActive(laboratoryStaff.getIsActive());
-        laboratoryStaffRepository.save(newLaboratoryStaff);
-        return newLaboratoryStaff;
+    public LaboratoryStaffResponseDTO addLaboratoryStaff(LaboratoryStaffRequestDTO laboratoryStaffRequestDTO) {
+        LaboratoryStaff newLaboratoryStaff = laboratoryStaffRequestDTO.toEntity();
+        newLaboratoryStaff.setIsActive(true);
+        LaboratoryStaff savedLaboratoryStaff = laboratoryStaffRepository.save(newLaboratoryStaff);
+        return LaboratoryStaffResponseDTO.fromEntity(savedLaboratoryStaff);
     }
+
     public LaboratoryStaff updateLaboratoryStaff(LaboratoryStaff laboratoryStaff){
         LaboratoryStaff updatedLaboratoryStaff = new LaboratoryStaff();
         updatedLaboratoryStaff.setName(laboratoryStaff.getName());
