@@ -28,15 +28,14 @@ public class LaboratoryStaffService {
         return LaboratoryStaffResponseDTO.fromEntity(savedLaboratoryStaff);
     }
 
-    public LaboratoryStaff updateLaboratoryStaff(LaboratoryStaff laboratoryStaff){
-        LaboratoryStaff updatedLaboratoryStaff = new LaboratoryStaff();
-        updatedLaboratoryStaff.setName(laboratoryStaff.getName());
-        updatedLaboratoryStaff.setPhone(laboratoryStaff.getPhone());
-        updatedLaboratoryStaff.setEmail(laboratoryStaff.getEmail());
-        updatedLaboratoryStaff.setDepartment(laboratoryStaff.getDepartment());
-        updatedLaboratoryStaff.setIsActive(laboratoryStaff.getIsActive());
-        laboratoryStaffRepository.save(updatedLaboratoryStaff);
-        return updatedLaboratoryStaff;
+    public LaboratoryStaffResponseDTO updateLaboratoryStaff(Integer id, LaboratoryStaffRequestDTO laboratoryStaffRequestDTO) {
+        LaboratoryStaff updatedLaboratoryStaff = laboratoryStaffRepository.findByLaboratoryStaffId(id);
+        updatedLaboratoryStaff.setName(laboratoryStaffRequestDTO.getName());
+        updatedLaboratoryStaff.setPhone(laboratoryStaffRequestDTO.getPhone());
+        updatedLaboratoryStaff.setEmail(laboratoryStaffRequestDTO.getEmail());
+        updatedLaboratoryStaff.setDepartment(laboratoryStaffRequestDTO.getDepartment());
+        LaboratoryStaff savedLaboratoryStaff = laboratoryStaffRepository.save(updatedLaboratoryStaff);
+        return LaboratoryStaffResponseDTO.fromEntity(savedLaboratoryStaff);
     }
 
     public void deleteLaboratoryStaff(Integer id){
