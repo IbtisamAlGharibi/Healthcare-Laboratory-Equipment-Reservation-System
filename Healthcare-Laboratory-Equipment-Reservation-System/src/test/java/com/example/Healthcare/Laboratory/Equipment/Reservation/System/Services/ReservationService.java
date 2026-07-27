@@ -56,8 +56,13 @@ public class ReservationService {
         return response;
     }
 
-    public List<Reservation> getReservationsByStaff(Integer staffId) {
-        return reservationRepository.findReservationsByLaboratoryStaffId(staffId);
+    public List<ReservationResponseDTO> getReservationsByStaff(Integer staffId) {
+        List<Reservation> reservations = reservationRepository.findReservationsByLaboratoryStaffId(staffId);
+        List<ReservationResponseDTO> response = new ArrayList<>();
+        for (Reservation reservation : reservations) {
+            response.add(ReservationResponseDTO.fromEntity(reservation));
+        }
+        return response;
     }
 
     public void deleteReservation(Integer id){
