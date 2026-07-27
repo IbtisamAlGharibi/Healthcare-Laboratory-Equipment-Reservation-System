@@ -1,4 +1,4 @@
-package com.example.Healthcare.Laboratory.Equipment.Reservation.System.DTOS;
+package com.example.Healthcare.Laboratory.Equipment.Reservation.System.DTOS.Response;
 
 import com.example.Healthcare.Laboratory.Equipment.Reservation.System.Entities.Reservation;
 import lombok.AllArgsConstructor;
@@ -10,21 +10,26 @@ import java.time.LocalTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReservationDTO {
+public class ReservationResponseDTO {
     private Integer id;
     private LocalDate reservationDate;
     private LocalTime startTime;
     private LocalTime endTime;
     private String purpose;
     private String status;
+    private Integer staffId;
+    private String staffName;
 
-    public static ReservationDTO fromEntity(Reservation reservation) {
-        ReservationDTO dto = new ReservationDTO();
+
+    public static ReservationResponseDTO fromEntity(Reservation reservation) {
+        ReservationResponseDTO dto = new ReservationResponseDTO();
         dto.setId(reservation.getId());
         dto.setStartTime(reservation.getStartTime());
         dto.setEndTime(reservation.getEndTime());
         dto.setPurpose(reservation.getPurpose());
         dto.setStatus(reservation.getStatus());
+        dto.setStaffId(dto.getStaffId());
+        dto.setStaffName(dto.getStaffName());
         return dto;
     }
 }

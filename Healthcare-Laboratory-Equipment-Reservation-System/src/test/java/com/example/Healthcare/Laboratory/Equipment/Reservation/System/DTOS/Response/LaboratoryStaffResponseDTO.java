@@ -1,4 +1,4 @@
-package com.example.Healthcare.Laboratory.Equipment.Reservation.System.DTOS;
+package com.example.Healthcare.Laboratory.Equipment.Reservation.System.DTOS.Response;
 
 import com.example.Healthcare.Laboratory.Equipment.Reservation.System.Entities.LaboratoryStaff;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LaboratoryStaffDTO {
+public class LaboratoryStaffResponseDTO {
     private Integer id;
     private String name;
     private String email;
@@ -16,8 +16,8 @@ public class LaboratoryStaffDTO {
     private String department;
     private Boolean isActive;
 
-    public static LaboratoryStaffDTO fromEntity(LaboratoryStaff laboratoryStaff) {
-        LaboratoryStaffDTO dto = new LaboratoryStaffDTO();
+    public static LaboratoryStaffResponseDTO fromEntity(LaboratoryStaff laboratoryStaff) {
+        LaboratoryStaffResponseDTO dto = new LaboratoryStaffResponseDTO();
         dto.setId(laboratoryStaff.getId());
         dto.setName(laboratoryStaff.getName());
         dto.setEmail(laboratoryStaff.getEmail());
