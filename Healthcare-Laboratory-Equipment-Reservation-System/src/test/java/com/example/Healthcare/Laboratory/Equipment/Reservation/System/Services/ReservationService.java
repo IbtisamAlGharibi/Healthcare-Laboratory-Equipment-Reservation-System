@@ -1,5 +1,7 @@
 package com.example.Healthcare.Laboratory.Equipment.Reservation.System.Services;
 
+import com.example.Healthcare.Laboratory.Equipment.Reservation.System.DTOS.Request.ReservationRequestDTO;
+import com.example.Healthcare.Laboratory.Equipment.Reservation.System.DTOS.Response.ReservationResponseDTO;
 import com.example.Healthcare.Laboratory.Equipment.Reservation.System.Entities.LaboratoryStaff;
 import com.example.Healthcare.Laboratory.Equipment.Reservation.System.Entities.Reservation;
 import com.example.Healthcare.Laboratory.Equipment.Reservation.System.Repositories.LaboratoryStaffRepository;
@@ -20,16 +22,13 @@ public class ReservationService {
         this.laboratoryStaffRepository = laboratoryStaffRepository;
     }
 
-    public Reservation createReservation(Reservation reservation, Integer staffId) {
+    public ReservationResponseDTO createReservation(ReservationRequestDTO reservationRequestDTO, Integer staffId) {
         LaboratoryStaff laboratoryStaff = laboratoryStaffRepository.findByLaboratoryStaffId(staffId);
-        Reservation newReservation = new Reservation();
-       newReservation.setLaboratoryStaff(laboratoryStaff);
-       newReservation.setReservationDate(reservation.getReservationDate());
-       newReservation.setStatus(reservation.getStatus());
-       newReservation.setStartTime(reservation.getStartTime());
-       newReservation.setEndTime(reservation.getEndTime());
-       newReservation.setPurpose(reservation.getPurpose());
-       return reservationRepository.save(newReservation);
+        Reservation newReservation = reservationRequestDTO.toEntity();
+        newReservation.setLaboratoryStaff(laboratoryStaff);
+        newReservation.setStatus("Pending");
+        Reservation savedReservation = reservationRepository.save(newReservation);
+        return ReservationResponseDTO.fromEntity(savedReservation);
     }
     public Reservation approveReservation(Reservation reservation, Integer staffId) {
         Reservation newReservation = reservationRepository.findByLaboratoryStaffId(staffId);

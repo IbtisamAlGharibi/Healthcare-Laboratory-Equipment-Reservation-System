@@ -24,12 +24,13 @@ public class ReservationResponseDTO {
     public static ReservationResponseDTO fromEntity(Reservation reservation) {
         ReservationResponseDTO dto = new ReservationResponseDTO();
         dto.setId(reservation.getId());
+        dto.setReservationDate(reservation.getReservationDate());
         dto.setStartTime(reservation.getStartTime());
         dto.setEndTime(reservation.getEndTime());
         dto.setPurpose(reservation.getPurpose());
         dto.setStatus(reservation.getStatus());
-        dto.setStaffId(dto.getStaffId());
-        dto.setStaffName(dto.getStaffName());
+        dto.setStaffId(reservation.getLaboratoryStaff().getId());
+        dto.setStaffName(reservation.getLaboratoryStaff().getName());
         return dto;
     }
 }
